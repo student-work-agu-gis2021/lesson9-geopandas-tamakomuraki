@@ -28,10 +28,14 @@ latitudes = [63.748023986816406, 62.90789794921875, 60.511383056640625, 60.44499
 
 # Create a list of coordinate pairs
 # YOUR CODE HERE 1 
+coordpairs = list(zip(longitudes, latitudes))
+poly = Polygon(coordpairs)
 coordpairs=None
 
 # Create a shapely Polygon using the 'coordpairs' -list
 # YOUR CODE HERE 2 
+coordpairs = list(zip(longitudes, latitudes))
+poly = Polygon(coordpairs)
 poly = None
 
 # CODE FOR TESTING YOUR SOLUTION
@@ -49,6 +53,8 @@ print(poly.geom_type)
 # Create an empty GeoDataFrame
 geo = None
 # YOUR CODE HERE 3
+geo = gpd.GeoDataFrame(index=[0], columns=['geometry'])
+geo['geometry'] = poly
 
 # CODE FOR TESTING YOUR SOLUTION
 
@@ -66,6 +72,8 @@ print(len(geo))
 
 # Plot the polygon. What shape is it :) ?
 # YOUR CODE HERE 4
+import matplotlib.pyplot as plt
+geo.plot()
 
 # What can you see on the map? :) 
 
@@ -75,6 +83,7 @@ print(len(geo))
 fp = 'polygon.shp'
 
 # YOUR CODE HERE 5
+geo.to_file(fp)
 
 # CODE FOR TESTING YOUR SOLUTION
 
